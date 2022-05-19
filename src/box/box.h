@@ -37,5 +37,8 @@ box_add(box_t *box, void *value, void (*add_func)(box_t*, void*));
 int
 box_del(box_t *box, size_t index, size_t step, void (*del_func)(void*));
 
+int
+box_chg(box_t *box, size_t index, void *new_value, void (*chg_func)(box_t*, size_t, void*));
+
 #endif //BOX_H
 

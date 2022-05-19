@@ -86,3 +86,14 @@ box_del(box_t *box, size_t index, size_t step, void (*del_func)(void*)) {
 
     return B_OK;
 }
+
+int
+box_chg(box_t *box, size_t index, void *new_value, void (*chg_func)(box_t*, size_t, void*)) {
+    if (index < 0 || index >= box->len) {
+        return B_INDEX_OUT_OF_RANGE;
+    }
+
+    chg_func(box, index, new_value);
+
+    return B_OK;
+}
