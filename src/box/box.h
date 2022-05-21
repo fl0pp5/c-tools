@@ -17,6 +17,7 @@ typedef struct {
     size_t  cap;
 
     size_t  _mem_used;
+    size_t  _item_size;
 } box_t;
 
 box_t *
@@ -29,16 +30,16 @@ void
 dealloc_box(box_t *box);
 
 int
-box_get(box_t *box, size_t index, void *storage, void (*get_func)(box_t*, size_t, void*));
+box_get(box_t *box, size_t index, void *storage, void (*get_func)(box_t*, void*, void*));
 
 int
-box_add(box_t *box, void *value, void (*add_func)(box_t*, void*));
+box_add(box_t *box, void *value, void (*add_func)(box_t*, void*, void*));
 
 int
 box_del(box_t *box, size_t index, size_t step, void (*del_func)(void*));
 
 int
-box_chg(box_t *box, size_t index, void *new_value, void (*chg_func)(box_t*, size_t, void*));
+box_chg(box_t *box, size_t index, void *new_value, void (*chg_func)(box_t*, void*, void*));
 
 #endif //BOX_H
 
